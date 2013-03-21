@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: spring_fling_development
+  pool: 5
+  username: spring_fling
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: spring_fling_test
+  pool: 5
+  username: spring_fling
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: spring_fling_production
+  pool: 5
+  username: spring_fling
+  password:

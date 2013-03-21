@@ -1,0 +1,6 @@
+#container
+:javascript
+  $(function() {
+    window.router = new SpringFling.Router({artists: #{@artists.to_json(:include => [:images, :tracks]).html_safe}});
+    Backbone.history.start();
+  });
