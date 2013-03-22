@@ -55,16 +55,18 @@ body {
     right: 0;
     height: 50px;
     width: 300px;
-    background: black;
     padding: 0 15px;
     opacity: 0.85;
     border: 1px solid white;
+    background: transparent;
     cursor: pointer;
     @include HN-Light;
     color: white;
     @include transition(0.3s);
+    &.dark {
+      background: black;
+    }
     &.light {
-      background: transparent;
       border: 1px solid black;
       color: black;
       opacity: 1;
@@ -161,6 +163,7 @@ body {
     margin: auto;
     position: relative;
     @include transition(margin 0.2s);
+    top: -100px;
   }
   #slideshow {
     height: 100%;
@@ -196,7 +199,7 @@ body {
     font-size: 3.75em;
     line-height: 120%;
     width: 440px;
-    background: red;
+    background: #3399FF;
     opacity: 0.75;
     padding: 0 10px;
   }
