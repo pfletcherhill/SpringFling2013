@@ -41,8 +41,12 @@ body {
     text-decoration: none;
     line-height: 80px;
     @include transition(0.2s);
+    opacity: 1;
     &:hover {
       color: yellow;
+    }
+    &.hidden {
+      opacity: 0;
     }
   }
   .select {
@@ -51,65 +55,95 @@ body {
     right: 0;
     height: 50px;
     width: 300px;
-    background: white;
+    background: black;
     padding: 0 15px;
-    border: 1px solid black;
-    border-radius: 5px;
+    opacity: 0.85;
+    border: 1px solid white;
     cursor: pointer;
     @include HN-Light;
-    &:hover {
+    color: white;
+    @include transition(0.3s);
+    &.light {
+      background: transparent;
+      border: 1px solid black;
+      color: black;
+      opacity: 1;
       .arrow {
-        border-top: 20px solid #777;
+        border-top: 15px solid black;
+        &.open {
+          border-top: 15px solid black;
+          border-bottom: 0px;
+        }
+      }
+      .selected {
+        border-right: 1px solid black;
+      }
+      .options {
+        background: transparent;
+        border: 1px solid black;
+        .option {
+          border-bottom: 1px solid black;
+          color: black;
+          &:hover {
+            background: #eee;
+            opacity: 0.7;
+          }
+        }
       }
     }
     .arrow {
       width: 0; 
       height: 0; 
-      border-left: 15px solid transparent;
-      border-right: 15px solid transparent;
-      border-top: 20px solid #aaa;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 15px solid white;
       position: absolute;
-      top: 16px;
+      top: 18px;
       right: 15px;
-      @include transition(border 0.2s);
+      @include transition(border-color 0.2s);
+      &.open {
+        border-top: 0px;
+        border-bottom: 15px solid white;
+      }
     }
     .selected {
       line-height: 50px;
       font-size: 20px;
-      width: 255px;
-      border-right: 1px solid #aaa;
+      width: 265px;
+      border-right: 1px solid white;
+      @include HN-Regular;
     }
     .options {
       display: none;
       position: absolute;
-      top: -1px;
+      top: 50px;
       left: -1px;
       width: 300px;
-      background: white;
+      background: black;
       margin: 0;
       padding: 0;
-      border-radius: 5px;
-      border: 1px solid black;
+      border: 1px solid white;
       width: 330px;
       .option {
         display: block;
         width: 300px;
-        border-bottom: 1px solid #777;
-        padding: 15px;
+        border-bottom: 1px solid #dadada;
+        padding: 0 15px;
         text-decoration: none;
-        color: black;
+        color: white;
+        line-height: 50px;
+        font-size: 20px;
+        @include HN-Regular;
         @include transition(0.2s);
-        &:first-child {
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
-        }
         &:last-child {
           border: none;
-          border-bottom-left-radius: 5px;
-          border-bottom-right-radius: 5px;
         }
         &:hover {
-          background: #f0f0f0;
+          background: #222;
+        }
+        .time {
+          width: 50px;
+          @include HN-Light;
         }
       }
     }
@@ -147,6 +181,33 @@ body {
     background-repeat: no-repeat;
     background-position: center;
   }
+  .home {
+    background-position: bottom;
+    background-image: url("/assets/party.jpg");
+  }
+  .home-container {
+    width: $width;
+    margin: auto;
+    position: relative;
+    @include calc(top, "100% - 190px");
+  }
+  .home-header, .home-subheader {
+    color: white;
+    font-size: 3.75em;
+    line-height: 120%;
+    width: 440px;
+    background: red;
+    opacity: 0.75;
+    padding: 0 10px;
+  }
+  .home-header {
+    @include HN-Bold;
+    padding-top: 10px;
+  }
+  .home-subheader {
+    @include HN-Light;
+    padding-bottom: 10px;
+  }
 }
 
 // Details
@@ -171,8 +232,9 @@ body {
     @include HN-Light;
   }
   .footer {
+    clear: both;
     margin-top: 20px;
-    padding-top: 5px;
+    padding-top: 15px;
     border-top: 1px solid #dadada;
     color: #aaa;
     @include HN-Light;
@@ -183,6 +245,13 @@ body {
 }
 
 // Playlist
+.title {
+  @include HN-Bold;
+  font-size: 20px;
+  line-height: 20px;
+  border-bottom: 1px solid black;
+  padding-bottom: 8px;
+}
 .playlist {
   position: absolute;
   top: -30px;
@@ -193,13 +262,6 @@ body {
   z-index: 100;
   background: white;
   padding: 15px;
-  .title {
-    @include HN-Bold;
-    font-size: 20px;
-    line-height: 20px;
-    border-bottom: 1px solid black;
-    padding-bottom: 8px;
-  }
   .track {
     margin: 5px 0;
     span {
@@ -225,5 +287,79 @@ body {
     &.playing {
       background-image: url("/assets/pause.png");
     }
+  }
+}
+
+//Home
+.schedule {
+  float: left;
+  width: 428px;
+  min-height: 100px;
+  border: 1px solid #dadada;
+  z-index: 100;
+  background: white;
+  padding: 15px;
+  margin-top: 20px;
+}
+.schedule-table {
+  width: 100%;
+  tr {
+    border-bottom: 1px solid #777;
+  }
+  border-collapse: collapse;
+  td {
+    padding: 10px 0;
+    @include HN-Regular;
+    a {
+      color: black;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .time {
+    width: 80px;
+    @include HN-Light;
+  }
+}
+
+.videos {
+  float: right;
+  width: 470px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.video {
+  display: inline-block;
+  position: relative;
+  width: 48.5%;
+  margin-bottom: 10px;
+  cursor: pointer;
+  @include transition(opacity 0.2s);
+  &:hover {
+    opacity: 0.8;
+  }
+  img {
+    width: 100%;
+  }
+  &:nth-child(odd) {
+    margin-right: 9px;
+  }
+  .video-artist, .video-name {
+    position: absolute;
+    left: 5px;
+    color: white;
+  }
+  .video-artist {
+    bottom: 35px;
+    font-size: 12px;
+    text-transform: uppercase;
+    @include HN-Bold;
+  }
+  .video-name {
+    bottom: 10px;
+    font-size: 18px;
+    @include HN-Light;
   }
 }

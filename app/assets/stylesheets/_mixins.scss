@@ -1,14 +1,18 @@
 //Fonts
+@font-face { font-family: FuturaStd-Book; src: url('/assets/FuturaStd-Book.otf'); } 
+@font-face { font-family: FuturaStd-Heavy; src: url('/assets/FuturaStd-Heavy.otf'); }
+@font-face { font-family: FuturaStd-Light; src: url('/assets/FuturaStd-Light.otf'); }
+
 @mixin HN-Light {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: FuturaStd-Light, Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: lighter;
 }
 @mixin HN-Bold {
-  font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: FuturaStd-Heavy, Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: bold;
 }
 @mixin HN-Regular {
-  font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: FuturaStd-Book, Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: normal;
 }
 

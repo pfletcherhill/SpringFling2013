@@ -6,6 +6,8 @@ class SpringFling.Views.Index extends Backbone.View
   detailsTemplate: JST["backbone/templates/artist/details"]
   trackTemplate: JST["backbone/templates/artist/track"]
   slideTemplate: JST["backbone/templates/artist/slide"]
+  optionTemplate: JST["backbone/templates/artist/option"]
+  homeTemplate: JST["backbone/templates/home"]
   
   el: "body"
   
@@ -18,18 +20,23 @@ class SpringFling.Views.Index extends Backbone.View
   
   populateDropdown: ->
     for artist in @artists.models
-      $("#dropdown .options").append('<a class="option" href="#' + artist.get("param") + '" data-param="' + artist.get("param") + '">' + artist.get("name") + '</a>')
+      $("#dropdown .options").append(@optionTemplate(artist: artist))
   
   reset: (param) ->
+    $(".select").removeClass("light")
     $(".content .player").html("<div id='player'></div>")
     if param != ""
+      if @artist.get("light") == true
+        $(".select").addClass "light"
+      $(".logo").removeClass("hidden")
       $("#dropdown .selected").html(@artist.get("name")).data("value", param)  
     else
-      $("#dropdown .selected").html("Home").data("value", param)  
+      $(".logo").addClass("hidden")
+      $("#dropdown .selected").html("Menu").data("value", param)  
        
   renderHome: ->
     @reset("")
-    $(".details .container").html("")
+    $(".details .container").html(@homeTemplate())
     if @imagesAdded
       @transitionImages()
     else
@@ -93,13 +100,10 @@ class SpringFling.Views.Index extends Backbone.View
        
   events: 
     "click .paused" : "playTrack"
-    "click .select" : "openSelect"
-    "click .option" : "closeSelect"
+    "click .select" : "toggleSelect"
+    "click .option" : "toggleSelect"
     "click .playing" : "pauseVideo"
-  
-  closeSelect: (event) ->
-    event.stopPropagation()
-    $(".options").hide()
+    "click .video" : "openVideo"
   
   setButtons: (event) ->
     $(".play-icon").removeClass "playing"
@@ -115,15 +119,24 @@ class SpringFling.Views.Index extends Backbone.View
       @embedYoutube(url)
       @setButtons(event)
     
-  openSelect: (event) ->
-    $(".select .options").show()
+  toggleSelect: (event) ->
+    event.stopPropagation()
+    if $(".arrow").hasClass("open")
+      $(".arrow").removeClass("open")
+      $(".select .options").hide()
+    else
+      $(".arrow").addClass("open")
+      $(".select .options").show()
   
   pauseVideo: ->
     @player.pauseVideo() 
-    console.log "time", @player.getCurrentTime() 
     @setButtons()
   
   playVideo: (event) ->
     @player.playVideo()
     @setButtons(event)
-    
+  
+  openVideo: (event) ->
+    url = $(event.target).parent().data("url")
+    param = $(event.target).parent().data("param")
+    window.location = "#" + param

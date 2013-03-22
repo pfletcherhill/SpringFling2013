@@ -11,12 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317073702) do
+ActiveRecord::Schema.define(:version => 20130322190226) do
 
   create_table "artists", :force => true do |t|
-    t.string "param"
-    t.string "name"
-    t.text   "about"
+    t.string  "param"
+    t.string  "name"
+    t.text    "about"
+    t.boolean "light"
+    t.string  "time"
   end
 
   create_table "images", :force => true do |t|
