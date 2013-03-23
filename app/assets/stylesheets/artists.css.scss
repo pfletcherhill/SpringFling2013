@@ -342,9 +342,6 @@ body {
   &:hover {
     opacity: 0.8;
   }
-  img {
-    width: 100%;
-  }
   &:nth-child(odd) {
     margin-right: 9px;
   }
@@ -363,5 +360,12 @@ body {
     bottom: 10px;
     font-size: 18px;
     @include HN-Light;
+  }
+  .video-image {
+    width: 100%;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
   }
 }
