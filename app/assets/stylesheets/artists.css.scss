@@ -163,7 +163,6 @@ body {
     margin: auto;
     position: relative;
     @include transition(margin 0.2s);
-    top: -100px;
   }
   #slideshow {
     height: 100%;
