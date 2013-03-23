@@ -173,6 +173,7 @@ body {
     @include transition(opacity 0.5s);
     &.playing {
       opacity: 0;
+      z-index: -1;
     }
   }
   .slide {
@@ -199,7 +200,7 @@ body {
     line-height: 120%;
     width: 440px;
     background: #3399FF;
-    opacity: 0.75;
+    opacity: 0.85;
     padding: 0 10px;
   }
   .home-header {
