@@ -12,7 +12,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'bcrypt-ruby', :require => 'bcrypt'
 
 #Youtube
 gem 'swfobject-rails'
@@ -20,19 +19,12 @@ gem 'swfobject-rails'
 #Backbone.js & Underscore.js
 gem 'rails-backbone'
 
-#Heroku
-gem 'heroku'
-gem 'thin'
+# #Heroku
+# gem 'heroku'
+# gem 'thin'
+
+#Deploying
+gem 'capistrano'
 
 #HAML
 gem 'haml'
-
-#BCrypt
-gem 'bcrypt-ruby', :require => 'bcrypt'
-
-#Paperclip
-gem "paperclip", "~> 3.0"
-
-#Amazon S3
-gem 'aws-s3'
-gem 'aws-sdk'
