@@ -1,23 +1,20 @@
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: spring_fling_development
+  adapter: sqlite3
+  database: db/development.sqlite3
   pool: 5
-  username: spring_fling
-  password:
+  timeout: 5000
 
 test:
-  adapter: postgresql
-  encoding: unicode
-  database: spring_fling_test
+  adapter: sqlite3
+  database: db/test.sqlite3
   pool: 5
-  username: spring_fling
-  password:
+  timeout: 5000
 
 production:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql
+  encoding: utf8
   database: spring_fling_production
-  pool: 5
   username: spring_fling
-  password:
+  password: Calcio1023!
+  host: mysql.yalespringfling2013.com
+  port: 3306
