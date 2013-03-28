@@ -126,9 +126,10 @@ class SpringFling.Views.Index extends Backbone.View
     "click #welcome-close" : "closeWelcome"
   
   closeWelcome: (event) =>
-    $("#welcome").addClass "hidden"
-    @renderHome()
-    _.delay(@clearWelcome, 1000)
+    unless $("#welcome").hasClass "hidden"
+      $("#welcome").addClass "hidden"
+      @renderHome()
+      _.delay(@clearWelcome, 1000)
   
   clearWelcome: =>
     $("#welcome").html("")
