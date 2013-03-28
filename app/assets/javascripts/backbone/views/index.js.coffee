@@ -24,11 +24,11 @@ class SpringFling.Views.Index extends Backbone.View
       $("#dropdown .options").append(@optionTemplate(artist: artist))
   
   reset: (param) ->
-    $(".select").removeClass("light dark")
+    $(".select").removeClass("light dark apparel")
     $("#apparel").addClass("closed")
     $(".content .player").html("<div id='player'></div>")
     if param == "apparel"
-      $(".select").addClass "light"
+      $(".select").addClass "light apparel"
       $(".logo").removeClass("hidden")
       $("#dropdown .selected").html("Spring Fling Apparel").data("value", param)  
     else if param != ""

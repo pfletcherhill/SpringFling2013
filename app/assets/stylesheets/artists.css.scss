@@ -102,6 +102,12 @@ body {
         }
       }
     }
+    &.apparel {
+      .options {
+        background: white;
+        opacity: 0.9;
+      }
+    }
     .arrow {
       width: 0; 
       height: 0; 
@@ -358,6 +364,7 @@ body {
   border-bottom: 1px solid black;
   padding-bottom: 15px;
   margin-bottom: 15px;
+  margin-top: 10px;
   .title-time {
     float: right;
     font-size: 20px;
@@ -456,9 +463,14 @@ body {
   padding: 15px;
   margin-top: 20px;
   margin-bottom: 20px;
-  .title {
+  .schedule-title {
+    @include HN-Bold;
     font-size: 20px;
     line-height: 20px;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    margin-bottom: 2px;
+    margin-top: 5px;
   }
 }
 .schedule-table {
