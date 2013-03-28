@@ -1,1 +1,6 @@
-<div class="track"><span data-url="<%= youtube_url %>" class="play-icon paused"></span><span><%= name %></span></div>
+<div class="track" data-url="<%= track.youtube_url %>">
+  <div class="video-image" style="background-image: url('<%= track.image %>')"></div>
+  <div data-url="<%= track.youtube_url %>" class="play-icon paused"></div>
+  <div class="video-artist"><%= artist.get("name") %></div>
+  <div class="video-name"><%= track.name %></div>
+</div>

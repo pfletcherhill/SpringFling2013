@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322190226) do
+ActiveRecord::Schema.define(:version => 20130328072510) do
 
   create_table "artists", :force => true do |t|
     t.string  "param"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20130322190226) do
     t.integer "artist_id"
     t.string  "name"
     t.string  "youtube_url"
+    t.string  "image"
   end
 
 end

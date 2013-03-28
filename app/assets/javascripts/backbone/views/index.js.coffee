@@ -25,6 +25,7 @@ class SpringFling.Views.Index extends Backbone.View
   
   reset: (param) ->
     $(".select").removeClass("light dark")
+    $("#apparel").addClass("closed")
     $(".content .player").html("<div id='player'></div>")
     if param != ""
       if @artist.get("light") == true
@@ -43,7 +44,11 @@ class SpringFling.Views.Index extends Backbone.View
     url = "iWZl34Z4v2Y"
     $(@el).append(@welcomeTemplate(width: width, height: height, url: url))
     _.delay(@closeWelcome, 96000)
-        
+  
+  renderApparel: =>
+    @reset("")
+    $("#apparel").removeClass("closed")
+          
   renderHome: ->
     @reset("")
     $(".details .container").html(@homeTemplate())
@@ -54,7 +59,7 @@ class SpringFling.Views.Index extends Backbone.View
  
   addTracks: ->
     for track in @artist.get('tracks')
-      $("#playlist").append(@trackTemplate(track))
+      $("#playlist").append(@trackTemplate(track: track, artist: @artist))
   
   addImages: (param) ->
     left = 0

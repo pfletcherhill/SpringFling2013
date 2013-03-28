@@ -1,7 +1,8 @@
-<div class="name"><%= artist.get("name") %></div>
-<div class="about"><%= artist.get("about") %></div>
 <div class="playlist">
-  <div class="title">Playlist</div>
+  <div class="title">
+    <%= artist.get("name") %>
+    <span class="title-time">Performing at <%= artist.get("time") %></span>
+  </div>
   <div id="playlist"></div>
 </div>
 <div class="footer">Designed and built by Paul Fletcher-Hill</div>

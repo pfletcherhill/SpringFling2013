@@ -7,9 +7,14 @@ class SpringFling.Router extends Backbone.Router
     @welcome = true
     
   routes:
+    "apparel" : "apparel"
     ":id" : "artist"
     ".*" : "index"
   
+  apparel: ->
+    @welcome = false
+    @view.renderApparel()
+    
   index: ->
     if @welcome
       @welcome = false
