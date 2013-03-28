@@ -180,6 +180,7 @@ body {
 
 // Apparel
 #apparel {
+  @include transition(0s);
   background: white;
 }
 
