@@ -377,7 +377,7 @@ body {
   position: relative;
   top: -30px;
   left: 0px;
-  width: $width;
+  width: 930px;
   min-height: 100px;
   border: 1px solid #dadada;
   background: white;
@@ -395,7 +395,7 @@ body {
     position: relative;
     display: inline-block;
     height: 160px;
-    width: 228px;
+    width: 222px;
     @include transition(opacity 0.2s);
     background: black;
     &:hover {
