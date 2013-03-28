@@ -21,8 +21,7 @@ class SpringFling.Views.Index extends Backbone.View
   
   populateDropdown: ->
     for artist in @artists.models
-      console.log artist.get("name"), artist.get("time")
-      $("#dropdown .options").prepend(@optionTemplate(artist: artist))
+      $("#dropdown .options").append(@optionTemplate(artist: artist))
   
   reset: (param) ->
     $(".select").removeClass("light dark")
