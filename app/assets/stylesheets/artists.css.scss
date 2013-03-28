@@ -299,6 +299,24 @@ body {
     font-size: 12px;
     line-height: 12px;
     text-align: center;
+    height: 80px;
+    h5 {
+      margin: 0;
+      margin-bottom: 10px;
+      @include HN-Bold;
+    }
+    .ticketing, .credits {
+      text-align: left;
+      line-height: 16px;
+      float: left;
+    }
+    .ticketing {
+      width: 460px;
+      margin-right: 30px;
+    }
+    .credits {
+      width: 455px;
+    }
   }
 }
 
