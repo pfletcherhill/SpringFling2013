@@ -1,7 +1,7 @@
 class ArtistsController < ApplicationController
   
   def index
-    @artists = Artist.all
+    @artists = Artist.order("time").all
     render json: @artists.to_json(:include => [:images, :tracks])
   end
   
