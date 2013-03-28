@@ -333,14 +333,14 @@ body {
     span {
       vertical-align: top
     }
-    margin-right: 10px;
+    margin-right: 9px;
     &:nth-child(4n+0) {
       margin-right: 0px;
     }
     position: relative;
     display: inline-block;
     height: 150px;
-    width: 225px;
+    width: 228px;
     @include transition(opacity 0.2s);
     background: black;
     &:hover {
@@ -408,6 +408,10 @@ body {
   padding: 15px;
   margin-top: 20px;
   margin-bottom: 20px;
+  .title {
+    font-size: 20px;
+    line-height: 20px;
+  }
 }
 .schedule-table {
   width: 100%;
