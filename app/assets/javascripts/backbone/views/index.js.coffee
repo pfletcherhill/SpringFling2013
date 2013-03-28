@@ -27,7 +27,11 @@ class SpringFling.Views.Index extends Backbone.View
     $(".select").removeClass("light dark")
     $("#apparel").addClass("closed")
     $(".content .player").html("<div id='player'></div>")
-    if param != ""
+    if param == "apparel"
+      $(".select").addClass "light"
+      $(".logo").removeClass("hidden")
+      $("#dropdown .selected").html("Spring Fling Apparel").data("value", param)  
+    else if param != ""
       if @artist.get("light") == true
         $(".select").addClass "light"
       $(".logo").removeClass("hidden")
@@ -46,7 +50,7 @@ class SpringFling.Views.Index extends Backbone.View
     _.delay(@closeWelcome, 96000)
   
   renderApparel: =>
-    @reset("")
+    @reset("apparel")
     $("#apparel").removeClass("closed")
           
   renderHome: ->

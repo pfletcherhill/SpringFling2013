@@ -163,7 +163,6 @@ body {
 
 // Hover-overs
 #apparel, #welcome {
-  z-index: 999;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -181,12 +180,30 @@ body {
 // Apparel
 #apparel {
   @include transition(0s);
-  background: white;
+  background: #fafafa;
+  z-index: 99;
+  overflow: scroll;
+  .tanks {
+    width: $width;
+    margin: auto;
+    img {
+      width: 50%;
+    }
+    text-align: center;
+    h1 {
+      @include HN-Bold;
+      font-size: 40px;
+    }
+    h2 {
+      @include HN-Light;
+    }
+  }
 }
 
 // Welcome
 #welcome {
   background: black;
+  z-index: 999;
 }
 #welcome-close {
   width: 30px;
