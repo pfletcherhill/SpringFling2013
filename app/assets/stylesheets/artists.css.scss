@@ -295,7 +295,7 @@ body {
     margin-top: 20px;
     padding-top: 15px;
     border-top: 1px solid #dadada;
-    color: #aaa;
+    color: #777;
     @include HN-Light;
     font-size: 12px;
     line-height: 12px;
@@ -325,6 +325,7 @@ body {
     }
     .credits {
       width: 205px;
+      margin-right: 15px;
       a {
         color: #777;
       }
