@@ -1,25 +1,30 @@
 default_run_options[:pty] = true
 
-# be sure to change these
-set :user, 'pfletch1023'
-set :domain, 'yalespringfling2013.com'
-set :application, 'SpringFling'
+set :user, 'pfletch1023'  # Your dreamhost account's username
+set :domain, 'button-gwinnett.dreamhost.com'  # Dreamhost servername where your account is located 
+set :project, 'SpringFling'  # Your application as its called in the repository
+set :application, 'yalespringfling2013.com'  # Your app's location (domain or sub-domain name as setup in panel)
+set :applicationdir, "/home/#{user}/#{application}"  # The standard Dreamhost setup
 
-# the rest should be good
-set :repository,  "#{user}@#{domain}:git/#{application}.git"
-set :deploy_to, "/home/#{user}/#{domain}"
-set :deploy_via, :remote_cache
+# roles (servers)
+role :web, domain
+role :app, domain
+role :db,  domain, :primary => true
+
+# deploy config
+set :deploy_to, applicationdir
+set :deploy_via, :export
+
+# additional settings
+default_run_options[:pty] = true  # Forgo errors when deploying from windows
+#ssh_options[:keys] = %w(/Path/To/id_rsa)            # If you are using ssh_keys
+set :chmod755, "app config db lib public vendor script script/* public/disp*"
+set :use_sudo, false
+
 set :scm, 'git'
+set :repository,  "git@github.com:pfletch1023/SpringFling.git"
+set :deploy_via, :remote_cache
+set :git_enable_submodules, 1 # if you have vendored rails
 set :branch, 'master'
 set :git_shallow_clone, 1
 set :scm_verbose, true
-set :use_sudo, false
-
-server domain, :app, :web
-role :db, domain, :primary => true
-
-namespace :deploy do
-  task :restart do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
-end
