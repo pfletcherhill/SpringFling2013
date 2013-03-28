@@ -8,6 +8,7 @@ class SpringFling.Views.Index extends Backbone.View
   slideTemplate: JST["backbone/templates/artist/slide"]
   optionTemplate: JST["backbone/templates/artist/option"]
   homeTemplate: JST["backbone/templates/home"]
+  welcomeTemplate: JST["backbone/templates/welcome"]
   
   el: "body"
   
@@ -34,7 +35,15 @@ class SpringFling.Views.Index extends Backbone.View
       $(".logo").addClass("hidden")
       $(".select").addClass("dark")
       $("#dropdown .selected").html("Menu").data("value", param)  
-       
+  
+  welcome: =>
+    @reset("")
+    width = $(window).width()
+    height = $(window).height()
+    url = "iWZl34Z4v2Y"
+    $(@el).append(@welcomeTemplate(width: width, height: height, url: url))
+    _.delay(@closeWelcome, 96000)
+        
   renderHome: ->
     @reset("")
     $(".details .container").html(@homeTemplate())
@@ -105,7 +114,16 @@ class SpringFling.Views.Index extends Backbone.View
     "click .option" : "toggleSelect"
     "click .playing" : "pauseVideo"
     "click .video" : "openVideo"
+    "click #welcome-close" : "closeWelcome"
   
+  closeWelcome: (event) =>
+    $("#welcome").addClass "hidden"
+    @renderHome()
+    _.delay(@clearWelcome, 1000)
+  
+  clearWelcome: =>
+    $("#welcome").html("")
+    
   setButtons: (event) ->
     $(".play-icon").removeClass "playing"
     if event

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 
-gem 'sqlite3'
+gem 'pg'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -19,12 +19,9 @@ gem 'swfobject-rails'
 #Backbone.js & Underscore.js
 gem 'rails-backbone'
 
-# #Heroku
-# gem 'heroku'
-# gem 'thin'
-
-#Deploying
-gem 'capistrano'
+#Heroku
+gem 'heroku'
+gem 'thin'
 
 #HAML
 gem 'haml'

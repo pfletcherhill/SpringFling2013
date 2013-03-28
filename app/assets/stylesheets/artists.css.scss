@@ -42,6 +42,14 @@ body {
     line-height: 80px;
     @include transition(0.2s);
     opacity: 1;
+    img {
+      height: 50px;
+      margin-top: 15px;
+      @include transition(0.2s);
+    }
+    &:hover {
+      opacity: 0.8;
+    }
     &:hover {
       color: yellow;
     }
@@ -152,6 +160,41 @@ body {
   }
 }
 
+// Welcome
+#welcome {
+  z-index: 999;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  @include transition(1s);
+  background: black;
+  &.hidden {
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+}
+#welcome-close {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  opacity: 0.5;
+  cursor: pointer;
+  background-image: url("/assets/close.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  @include transition(0.2s);
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
 // Content
 .content {
   @include calc(height, "#{$content-height} + #{$header-height}");
@@ -192,7 +235,7 @@ body {
     width: $width;
     margin: auto;
     position: relative;
-    @include calc(top, "100% - 190px");
+    @include calc(top, "100% - 300px");
   }
   .home-header, .home-subheader {
     color: white;
@@ -206,6 +249,9 @@ body {
   .home-header {
     @include HN-Bold;
     padding-top: 10px;
+    img {
+      width: 98%;
+    }
   }
   .home-subheader {
     @include HN-Light;
@@ -303,6 +349,7 @@ body {
   background: white;
   padding: 15px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .schedule-table {
   width: 100%;
