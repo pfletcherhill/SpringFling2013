@@ -206,6 +206,21 @@ body {
     }
   }
 }
+.order-link {
+  background: #47A3FF;
+  display: block;
+  color: white;
+  width: 400px;
+  margin: auto;
+  padding: 20px;
+  font-size: 20px;
+  text-decoration: none;
+  margin-top: 35px;
+  @include transition(0.2s);
+  &:hover {
+    background: #2E8AE6;
+  }
+}
 
 // Welcome
 #welcome {
