@@ -4,25 +4,22 @@ class SpringFling.Router extends Backbone.Router
     @artists = new SpringFling.Collections.Artists()
     @artists.add(options.artists)
     @view = new SpringFling.Views.Index(artists: @artists)
-    @welcome = true
     
   routes:
     "apparel" : "apparel"
+    "welcome" : "welcome"
     ":id" : "artist"
     ".*" : "index"
   
   apparel: ->
-    @welcome = false
     @view.renderApparel()
+  
+  welcome: ->
+    @view.welcome()
     
   index: ->
-    if @welcome
-      @welcome = false
-      @view.welcome()
-    else
-      @view.renderHome()
+    @view.renderHome()
     
   artist: (id) ->
-    @welcome = false
     @view.render(id)
     
